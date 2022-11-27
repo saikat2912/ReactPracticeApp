@@ -1,5 +1,4 @@
 import react, { useEffect, useState } from "react";
-import "./styles.css";
 import axios from "axios";
 
 export default function App() {
@@ -11,17 +10,20 @@ export default function App() {
 
   const getData = (url) => {
     axios.get(consturl).then((res) => {
-      setData(res);
+      setData(res.data);
+      console.log("data is ",res)
     });
   };
   return (
     <div className="App">
       <table>
-        {data.map((ele) => {
-          <div className="row" style>
-            <h1>{ele.title}</h1>
-          </div>;
+        <div>
+        {data.map(ele => {
+          return (<div className="row" style={{backgroundColor:"green",margin:"10%"}}>
+           <th> <h1>{ele.title}</h1></th>
+          </div>);
         })}
+        </div>
       </table>
     </div>
   );
