@@ -19,9 +19,9 @@ export default function App() {
       <table>
         <div>
         {data.map(ele => {
-          return (<div className="row" style={{backgroundColor:"green",margin:"10%"}}>
+          return (<tr><div className="row" style={{backgroundColor:"grey",margin:"10%"}}>
            <th> <h1>{ele.title}</h1></th>
-          </div>);
+          </div></tr>);
         })}
         </div>
       </table>
