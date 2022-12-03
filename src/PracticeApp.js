@@ -2,28 +2,30 @@ import React ,{useState}from 'react'
 
 
 function PracticeApp() {
-   const [data,setData]= useState([]);
-   const [text1,setText1]= useState("");
+    const [show,setShow] = useState(false);
+    const [counter,setCounter] = useState(0);
 
-   const onSubmit=()=>{
-    setData()
-}
-const onDelete =(e) =>{
+    const users = [
+        {name:"Janny",id:1},
+        {name:"Honey",id:2},
+        {name:"Suresh",id:3}
+    ];
+     
+    const userList =
+        users.map(ele=>{
+            return(
+            <li key={ele.id}>{ele.name}</li>);
+        })
     
-}
 return(
+    
     <div>
-    <input type="text" onChange={()=>setText1(e.target.value)} value={text1} />
-    <button onClick={onSubmit}>Add Value</button>
-    {data.map(ele=>{
-        <div>
-        <h3>{ele}</h3>
-        <button onClick={()=>onDelete}>Delete Value</button>
-        </div>
-    })
-
-    }
-    <button onClick={onDelete}>Delete Value</button>
+        <button onClick={()=>setShow(!show)}>Toggle</button>
+        <h1> The users are</h1>
+        {show &&<p><ul>{userList}</ul></p>}
+        <button onClick={()=>setCounter(counter+1)}>Increment</button>
+        <button onClick={()=>setCounter(counter-1)}>Decrement</button>
+        <h1>{counter>0?counter:0}</h1>
     </div>
 )
 }
